@@ -1,0 +1,1353 @@
+/* =========================================================================
+   CYBERSEC & THREAT INTELLIGENCE HUB - FOLHA DE ESTILO PRINCIPAL (style.css)
+   Integrantes: Pedro Silva (pedro_), Kauê Gonçalves (kaue_), Joelson Cropolato (joelson_)
+   Paleta Dark Mode: #090d16, #0f172a | Bordas: #1e293b | Destaques: #b91010, #f85238
+   ========================================================================= */
+
+/* Reset universal */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================================================
+   DEMONSTRAÇÃO 1: SELETOR DE TAG (html, body, main, table, img)
+   ========================================================================= */
+html {
+    scroll-behavior: smooth;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #090d16;
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+
+body {
+    background-color: #090d16;
+    color: #e2e8f0;
+    overflow-x: hidden;
+}
+
+main {
+    display: block;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #090d16;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    background-color: #1e293b;
+    color: #d23d26;
+    font-size: 0.85rem;
+}
+
+/* =========================================================================
+   DEMONSTRAÇÃO 2: SELETOR DE ID (#container, #wrap, #sec-panorama, etc.)
+   ========================================================================= */
+#container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #090d16;
+}
+
+#wrap {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+    flex: 1;
+}
+
+#sec-panorama,
+#sec-ameacas,
+#sec-arquitetura,
+#sec-ferramentas,
+#sec-owasp,
+#sec-soc,
+#sec-galeria,
+#sec-auditoria,
+#sec-evidencias,
+#sec-faq {
+    scroll-margin-top: 84px;
+}
+
+/* =========================================================================
+   DEMONSTRAÇÃO 3: SELETOR AGRUPADO (Múltiplos seletores separados por vírgula)
+   ========================================================================= */
+h1,
+h2,
+h3 {
+    color: #f8fafc;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.pedro_input_field,
+.pedro_select_field,
+.pedro_textarea_field,
+.pedro_input_file {
+    width: 100%;
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    color: #f1f5f9;
+    padding: 11px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pedro_btn_primario,
+.pedro_btn_secundario,
+.pedro_btn_perigo,
+.pedro_btn_filtro {
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+/* =========================================================================
+   DEMONSTRAÇÃO 4: SELETOR DE CLASSE (.pedro_..., .joelson_..., .kaue_...)
+   ========================================================================= */
+.pedro_header {
+    background-color: #0f172a;
+    border-bottom: 1px solid #1e293b;
+    padding: 28px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.pedro_badge_sigla {
+    display: inline-block;
+    color: #b91010;
+    background-color: rgba(185, 16, 16, 0.12);
+    border: 1px solid rgba(185, 16, 16, 0.35);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    margin-bottom: 8px;
+}
+
+.pedro_titulo_portal {
+    font-size: 1.9rem;
+    color: #f8fafc;
+    margin-bottom: 6px;
+}
+
+.pedro_subtitulo_portal {
+    color: #94a3b8;
+    font-size: 0.96rem;
+}
+
+.pedro_header_autores {
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    border-left: 3px solid #f85238;
+    padding: 12px 18px;
+    border-radius: 6px;
+}
+
+.pedro_equipe_label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    color: #f85238;
+    letter-spacing: 0.8px;
+}
+
+.pedro_equipe_nomes {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin-top: 2px;
+}
+
+/* Navegação Principal Fixa (Sticky) */
+.pedro_nav {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    background-color: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #1e293b;
+    padding: 0 16px;
+}
+
+.pedro_nav_lista {
+    max-width: 1320px;
+    margin: 0 auto;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 0;
+}
+
+/* =========================================================================
+   DEMONSTRAÇÃO 5: SELETOR ENCADEADO / DESCENDENTE (.pedro_nav ul li a, etc.)
+   ========================================================================= */
+.pedro_nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #cbd5e1;
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.pedro_nav ul li a:hover {
+    color: #b91010;
+    background-color: rgba(16, 185, 129, 0.1);
+    border-color: rgba(185, 16, 16, 0.3);
+}
+
+#sec-owasp table thead tr th {
+    background-color: #0f172a;
+    color: #f85238;
+    text-align: left;
+    padding: 14px 12px;
+    font-size: 0.86rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #1e293b;
+}
+
+#sec-owasp table tbody tr td {
+    padding: 13px 12px;
+    border-bottom: 1px solid #1e293b;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    vertical-align: top;
+}
+
+#sec-owasp table tbody tr:hover td {
+    background-color: rgba(56, 189, 248, 0.05);
+}
+
+/* Estrutura Padrão das 10 Seções */
+.pedro_section {
+    background-color: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 32px 28px;
+    margin-bottom: 36px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.pedro_section_head {
+    margin-bottom: 26px;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 16px;
+}
+
+.pedro_section_tag {
+    display: inline-block;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #b91010;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.pedro_section_title {
+    font-size: 1.55rem;
+    color: #f8fafc;
+    margin-bottom: 6px;
+}
+
+.pedro_section_subtitle {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.pedro_paragrafo {
+    color: #cbd5e1;
+    margin-bottom: 14px;
+    font-size: 0.96rem;
+}
+
+.pedro_btn_topo {
+    text-decoration: none;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #c62e16;
+    background-color: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(248, 56, 56, 0.28);
+    padding: 6px 14px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.pedro_btn_topo:hover {
+    background-color: #f85238;
+    color: #090d16;
+}
+
+/* =========================================================================
+   SEÇÃO 1: #sec-panorama (Banner, <article> e <aside>)
+   ========================================================================= */
+.pedro_banner_hero {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #1e293b;
+    margin-bottom: 26px;
+    background-color: #090d16;
+}
+
+.pedro_banner_img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    opacity: 0.35;
+}
+
+.pedro_banner_overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(9, 13, 22, 0.95) 0%, rgba(15, 23, 42, 0.78) 65%, rgba(9, 13, 22, 0.5) 100%);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.pedro_banner_heading {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    max-width: 780px;
+    color: #f8fafc;
+}
+
+.pedro_banner_desc {
+    max-width: 740px;
+    color: #cbd5e1;
+    font-size: 0.96rem;
+}
+
+.pedro_panorama_layout {
+    display: grid;
+    grid-template-columns: 2.2fr 1fr;
+    gap: 24px;
+}
+
+.pedro_article_principal {
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.pedro_article_title {
+    font-size: 1.22rem;
+    color: #f85238;
+    margin-bottom: 14px;
+}
+
+.pedro_metricas_panorama {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.pedro_metrica_item {
+    background-color: #0f172a;
+    border: 1px solid #1e293b;
+    padding: 14px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.pedro_metrica_valor {
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #b91010;
+}
+
+.pedro_metrica_rotulo {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.pedro_aside_alertas {
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    border-top: 3px solid #b91010;
+    border-radius: 8px;
+    padding: 22px;
+}
+
+.pedro_aside_title {
+    font-size: 1.12rem;
+    margin-bottom: 16px;
+    color: #b91010;
+}
+
+.pedro_aside_lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.pedro_aside_item {
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 12px;
+    font-size: 0.88rem;
+}
+
+.pedro_aside_item strong {
+    display: block;
+    color: #f1f5f9;
+    margin: 5px 0 3px;
+}
+
+.pedro_aside_item p {
+    color: #94a3b8;
+}
+
+/* =========================================================================
+   SEÇÃO 2: #sec-ameacas (4 Cards de Ataques Web)
+   ========================================================================= */
+.joelson_cards_wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.joelson_card {
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.joelson_card:hover {
+    transform: translateY(-4px);
+    border-color: #f85238;
+}
+
+.joelson_card_img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 1px solid #1e293b;
+    padding: 12px;
+}
+
+.joelson_card_body {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.joelson_card_title {
+    font-size: 1.12rem;
+    color: #f8fafc;
+}
+
+.joelson_card_text {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    flex: 1;
+}
+
+.joelson_card_mitigacao {
+    font-size: 0.83rem;
+    background-color: #0f172a;
+    border-left: 3px solid #b91010;
+    padding: 10px;
+    border-radius: 4px;
+    color: #94a3b8;
+}
+
+/* =========================================================================
+   SEÇÃO 3: #sec-arquitetura — APLICAÇÃO OBRIGATÓRIA DO GRID B (1fr 2fr 1fr)
+   ========================================================================= */
+.kaue_grid_b_arquitetura {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.kaue_arquitetura_col {
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 22px;
+}
+
+.kaue_arquitetura_destaque {
+    border-color: rgba(185, 16, 16, 0.45);
+    box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.04);
+}
+
+.kaue_col_title {
+    font-size: 1.1rem;
+    color: #d23d26;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #1e293b;
+}
+
+.kaue_lista_controles {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 0.88rem;
+    color: #cbd5e1;
+}
+
+.kaue_lista_controles li {
+    background-color: #0f172a;
+    border: 1px solid #1e293b;
+    padding: 10px 12px;
+    border-radius: 6px;
+}
+
+.kaue_camadas_box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.kaue_camada_item {
+    background-color: #0f172a;
+    border: 1px solid #1e293b;
+    border-left: 3px solid #b91010;
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+/* =========================================================================
+   SEÇÃO 4: #sec-ferramentas — APLICAÇÃO OBRIGATÓRIA DO GRID A (repeat(3, 1fr))
+   ========================================================================= */
+.pedro_grid_a_ferramentas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.pedro_tool_card {
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.2s ease;
+}
+
+.pedro_tool_card:hover {
+    border-color: #b91010;
+}
+
+.pedro_tool_title {
+    font-size: 1.15rem;
+    color: #f8fafc;
+}
+
+.pedro_tool_desc {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    flex: 1;
+}
+
+.pedro_tool_cmd {
+    display: block;
+    background-color: #0f172a;
+    border: 1px solid #1e293b;
+    color: #b91010;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.82rem;
+    padding: 8px 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+/* =========================================================================
+   SEÇÃO 5: #sec-owasp (Tabela 10x6 Semântica)
+   ========================================================================= */
+.kaue_tabela_responsiva {
+    overflow-x: auto;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+}
+
+.kaue_tabela_caption {
+    background-color: #090d16;
+    color: #b91010;
+    font-weight: 700;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #1e293b;
+    font-size: 0.92rem;
+}
+
+/* =========================================================================
+   SEÇÃO 6: #sec-soc — APLICAÇÃO OBRIGATÓRIA DO GRID C (grid-template-areas)
+   ========================================================================= */
+.joelson_grid_c_soc {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+        "area_topo area_topo"
+        "area_kpis area_sensores"
+        "area_feed area_sensores"
+        "area_rodape area_rodape";
+    gap: 20px;
+}
+
+.joelson_area_topo {
+    grid-area: area_topo;
+}
+
+.joelson_area_kpis {
+    grid-area: area_kpis;
+}
+
+.joelson_area_feed {
+    grid-area: area_feed;
+}
+
+.joelson_area_sensores {
+    grid-area: area_sensores;
+}
+
+.joelson_area_rodape {
+    grid-area: area_rodape;
+}
+
+.joelson_soc_box {
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.joelson_soc_status_line {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: #d23d26;
+}
+
+.joelson_soc_box_title {
+    font-size: 1.08rem;
+    color: #f8fafc;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 8px;
+}
+
+.joelson_kpi_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.joelson_kpi_card {
+    background-color: #0f172a;
+    border: 1px solid #1e293b;
+    padding: 14px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.joelson_kpi_num {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #b91010;
+}
+
+.joelson_kpi_label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.joelson_log_list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.joelson_log_entry {
+    background-color: #0f172a;
+    border: 1px solid #1e293b;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 0.87rem;
+    color: #cbd5e1;
+}
+
+.joelson_sensor_list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.joelson_sensor_list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0f172a;
+    border: 1px solid #1e293b;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+}
+
+.joelson_tag_ok {
+    color: #b91010;
+    font-size: 0.8rem;
+}
+
+.joelson_tag_warn {
+    color: #d23d26;
+    font-size: 0.8rem;
+}
+
+.joelson_soc_footer_text {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+/* =========================================================================
+   SEÇÃO 7: #sec-galeria (Galeria de Topologias)
+   ========================================================================= */
+.pedro_galeria_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.pedro_galeria_item {
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.pedro_galeria_img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-bottom: 1px solid #1e293b;
+    padding: 14px;
+}
+
+.pedro_galeria_legenda {
+    padding: 18px;
+}
+
+.pedro_galeria_titulo {
+    font-size: 1.08rem;
+    margin: 8px 0 6px;
+    color: #f8fafc;
+}
+
+.pedro_galeria_legenda p {
+    font-size: 0.88rem;
+    color: #94a3b8;
+}
+
+/* =========================================================================
+   SEÇÃO 8: #sec-auditoria (Funcionalidade Interativa 1 - Lista de Pentest)
+   ========================================================================= */
+.pedro_auditoria_painel {
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.pedro_auditoria_input_row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.pedro_auditoria_input_row .pedro_input_field {
+    flex: 1;
+    min-width: 240px;
+}
+
+.pedro_btn_primario {
+    background-color: #b91010;
+    color: #090d16;
+}
+
+.pedro_btn_primario:hover {
+    background-color: #960505;
+    color: #ffffff;
+}
+
+.pedro_btn_secundario {
+    background-color: #1e293b;
+    color: #e2e8f0;
+}
+
+.pedro_btn_secundario:hover {
+    background-color: #334155;
+}
+
+.pedro_btn_perigo {
+    background-color: rgba(239, 68, 68, 0.14);
+    color: #f87171;
+    border-color: rgba(239, 68, 68, 0.35);
+}
+
+.pedro_btn_perigo:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+.pedro_auditoria_toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+    margin-bottom: 16px;
+}
+
+.pedro_contadores_box {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pedro_contador_pill {
+    background-color: #0f172a;
+    border: 1px solid #1e293b;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+}
+
+.pedro_pill_pendente strong {
+    color: #f85238;
+}
+
+.pedro_pill_concluido strong {
+    color: #b91010;
+}
+
+.pedro_filtros_box {
+    display: flex;
+    gap: 8px;
+}
+
+.pedro_btn_filtro {
+    background-color: #0f172a;
+    color: #94a3b8;
+    border-color: #1e293b;
+    padding: 7px 14px;
+    font-size: 0.84rem;
+}
+
+.pedro_filtro_ativo {
+    background-color: rgba(56, 189, 248, 0.15);
+    color: #f85238;
+    border-color: #f85238;
+}
+
+.pedro_feedback_msg {
+    font-size: 0.88rem;
+    color: #f85238;
+    min-height: 20px;
+    margin-bottom: 10px;
+}
+
+.pedro_tarefas_ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pedro_tarefa_li {
+    background-color: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.pedro_tarefa_concluida {
+    border-left: 4px solid #b91010;
+    opacity: 0.88;
+}
+
+.pedro_tarefa_pendente {
+    border-left: 4px solid #f85238;
+}
+
+.pedro_tarefa_info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 220px;
+}
+
+.pedro_status_badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.pedro_badge_pendente {
+    background-color: rgba(56, 189, 248, 0.15);
+    color: #f85238;
+}
+
+.pedro_badge_concluido {
+    background-color: rgb(212 93 93 / 18%);
+    color: #b91010;
+}
+
+.pedro_tarefa_texto_concluido {
+    text-decoration: line-through;
+    color: #64748b;
+}
+
+.pedro_tarefa_acoes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pedro_btn_mini {
+    cursor: pointer;
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    color: #cbd5e1;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    transition: all 0.15s ease;
+}
+
+.pedro_btn_mini:hover {
+    border-color: #f85238;
+    color: #f85238;
+}
+
+/* =========================================================================
+   SEÇÃO 9: #sec-evidencias (Funcionalidade Interativa 2 - Modal Forense)
+   ========================================================================= */
+.joelson_evidencia_box {
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.joelson_form_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.joelson_campo_grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.joelson_campo_full {
+    grid-column: 1 / -1;
+}
+
+.joelson_label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #cbd5e1;
+}
+
+.joelson_evidencia_actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Estilo do Modal Forense e Overlay */
+.joelson_modal_overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(9, 13, 22, 0.86);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.joelson_modal_overlay.joelson_modal_aberto {
+    display: flex;
+}
+
+.joelson_modal_card {
+    background-color: #0f172a;
+    border: 1px solid #f85238;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+}
+
+.joelson_modal_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 22px;
+    background-color: #090d16;
+    border-bottom: 1px solid #1e293b;
+}
+
+.joelson_modal_close {
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #1e293b;
+    color: #f8fafc;
+    font-size: 1.5rem;
+    line-height: 1;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+}
+
+.joelson_modal_close:hover {
+    background-color: #ef4444;
+    border-color: #ef4444;
+}
+
+.joelson_modal_body {
+    padding: 22px;
+}
+
+.joelson_modal_title {
+    font-size: 1.3rem;
+    color: #b91010;
+    margin-bottom: 10px;
+}
+
+.joelson_modal_desc {
+    font-size: 0.94rem;
+    color: #cbd5e1;
+    margin-bottom: 18px;
+    background-color: #090d16;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #1e293b;
+}
+
+.joelson_modal_img_container {
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #090d16;
+}
+
+.joelson_modal_img {
+    width: 100%;
+    max-height: 380px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+/* =========================================================================
+   SEÇÃO 10: #sec-faq (Accordion com Busca + Formulário de 12 Campos)
+   ========================================================================= */
+.kaue_faq_container {
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 32px;
+}
+
+.kaue_faq_search_bar {
+    margin-bottom: 22px;
+}
+
+.kaue_faq_empty {
+    background-color: rgba(56, 189, 248, 0.1);
+    border: 1px solid #f85238;
+    color: #f85238;
+    padding: 14px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.kaue_faq_categorias_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.kaue_faq_cat_titulo {
+    font-size: 1.08rem;
+    color: #b91010;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #1e293b;
+}
+
+.kaue_faq_item {
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+.kaue_faq_pergunta {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #f1f5f9;
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.kaue_faq_pergunta:hover {
+    color: #f85238;
+}
+
+.kaue_faq_icone {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #b91010;
+    min-width: 20px;
+    text-align: center;
+}
+
+.kaue_faq_resposta {
+    display: none;
+    padding: 0 16px 14px;
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    border-top: 1px solid #1e293b;
+    padding-top: 12px;
+    background-color: #090d16;
+}
+
+.kaue_faq_item.kaue_faq_aberto .kaue_faq_resposta {
+    display: block;
+}
+
+/* Formulário de 12 Campos */
+.kaue_form_wrapper {
+    background-color: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 26px;
+}
+
+.kaue_form_main_title {
+    font-size: 1.3rem;
+    color: #f85238;
+    margin-bottom: 6px;
+}
+
+.kaue_fieldset {
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #0f172a;
+}
+
+.kaue_legend {
+    padding: 0 10px;
+    font-weight: 700;
+    color: #b91010;
+    font-size: 0.95rem;
+}
+
+.kaue_campos_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.kaue_espaco_bloco {
+    margin-top: 14px;
+}
+
+.kaue_opcoes_inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 6px;
+    background-color: #090d16;
+    padding: 12px 14px;
+    border-radius: 6px;
+    border: 1px solid #1e293b;
+}
+
+.kaue_check_label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: #e2e8f0;
+    cursor: pointer;
+}
+
+.kaue_termo_destaque {
+    background-color: #090d16;
+    border: 1px solid rgba(185, 16, 16, 0.4);
+    padding: 14px;
+    border-radius: 6px;
+}
+
+.kaue_form_botoes {
+    display: flex;
+    gap: 14px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+}
+
+/* Rodapé Principal Único */
+.pedro_footer {
+    background-color: #0f172a;
+    border-top: 1px solid #1e293b;
+    padding: 28px 24px;
+    margin-top: auto;
+}
+
+.pedro_footer_inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.pedro_footer_text {
+    font-size: 0.86rem;
+    color: #94a3b8;
+}
+
+/* =========================================================================
+   RESPONSIVIDADE OBRIGATÓRIA (@media queries adaptando Grids A, B, C e Layout)
+   ========================================================================= */
+@media (max-width: 1024px) {
+    /* Adaptação do Grid A e Cards para 2 colunas */
+    .pedro_grid_a_ferramentas,
+    .joelson_cards_wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Adaptação do Grid B para coluna única empilhada */
+    .kaue_grid_b_arquitetura,
+    .pedro_panorama_layout {
+        grid-template-columns: 1fr;
+    }
+
+    /* Reorganização obrigatória das áreas nomeadas do Grid C */
+    .joelson_grid_c_soc {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "area_topo"
+            "area_kpis"
+            "area_sensores"
+            "area_feed"
+            "area_rodape";
+    }
+}
+
+@media (max-width: 720px) {
+    .pedro_grid_a_ferramentas,
+    .joelson_cards_wrapper,
+    .pedro_galeria_grid,
+    .kaue_faq_categorias_grid,
+    .kaue_campos_grid,
+    .joelson_form_grid,
+    .pedro_metricas_panorama,
+    .joelson_kpi_grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pedro_section {
+        padding: 22px 16px;
+    }
+
+    .pedro_banner_overlay {
+        position: static;
+        padding: 20px;
+    }
+
+    .pedro_banner_img {
+        height: 180px;
+    }
+}

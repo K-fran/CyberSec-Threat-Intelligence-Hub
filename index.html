@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal acadêmico e profissional de Cibersegurança, Análise de Vulnerabilidades OWASP e Monitoramento SOC.">
+    <title>CyberSec &amp; Threat Intelligence Hub | Pedro Silva, Kauê Gonçalves &amp; Joelson Cropolato</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- =================================================================
+         REQUISITO 3: CSS INTERNO (Estilizando 5 elementos distintos)
+         ================================================================= -->
+    <style>
+        /* 1. Barra de destaque superior de status operacional */
+        .pedro_status_bar {
+            background: linear-gradient(90deg, #090d16 0%, #0f172a 50%, #090d16 100%);
+            border-bottom: 1px solid #1e293b;
+            padding: 8px 24px;
+            font-size: 0.82rem;
+            color: #94a3b8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* 2. Indicador luminoso pulsante de ameaça ativa */
+        .joelson_pulse_dot {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            background-color: #b91010;
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 8px #b91010;
+        }
+
+        /* 3. Destaque tipográfico em código técnico inline */
+        .kaue_code_badge {
+            font-family: "Courier New", Courier, monospace;
+            background-color: rgb(77 33 33 / 35%);
+            color: #f83838;
+            padding: 2px 7px;
+            border-radius: 4px;
+            border: 1px solid rgba(248, 56, 66, 0.3);
+            font-size: 0.85em;
+        }
+
+        /* 4. Caixa de citação técnica de inteligência de ameaças */
+        .pedro_quote_intel {
+            border-left: 4px solid #b91010;
+            background-color: rgba(185, 16, 16, 0.06);
+            padding: 14px 18px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #cbd5e1;
+        }
+
+        /* 5. Rodapé de retorno ao topo padronizado das seções */
+        .joelson_retorno_container {
+            margin-top: 28px;
+            padding-top: 14px;
+            border-top: 1px dashed #1e293b;
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body id="topo" class="pedro_body">
+
+    <!-- Uso obrigatório dos IDs #container e #wrap -->
+    <div id="container" class="pedro_main_container">
+
+        <!-- Barra informativa superior -->
+        <div class="pedro_status_bar">
+            <div>
+                <span class="joelson_pulse_dot"></span>
+                <span><strong>SOC DEFCON LEVEL:</strong> 4 (Monitoramento Contínuo Ativo)</span>
+            </div>
+            <div>
+                <span>Feed CTI: <span class="kaue_code_badge">MISP-STIX-2.1</span> | Protocolo: <span class="kaue_code_badge">TLS 1.3 / AES-256-GCM</span></span>
+            </div>
+        </div>
+
+        <!-- TAG SEMÂNTICA ÚNICA 1: <header> -->
+        <header class="pedro_header">
+            <div class="pedro_header_brand">
+                <!-- CSS INLINE 1 de 3 -->
+                <span class="pedro_badge_sigla" style="letter-spacing: 2px; text-transform: uppercase; font-weight: 800;">CTI // SEC-OPS</span>
+                <h1 class="pedro_titulo_portal">CyberSec &amp; Threat Intelligence Hub</h1>
+                <p class="pedro_subtitulo_portal">Plataforma Integrada de Engenharia de Segurança, Análise OWASP Top 10 e Telemetria SOC</p>
+            </div>
+            <div class="pedro_header_autores">
+                <p class="pedro_equipe_label">Arquitetos de Segurança Responsáveis:</p>
+                <p class="pedro_equipe_nomes">Pedro Silva &bull; Kauê Gonçalves &bull; Joelson Cropolato</p>
+            </div>
+        </header>
+
+        <!-- TAG SEMÂNTICA ÚNICA 2: <nav> -->
+        <nav class="pedro_nav" aria-label="Navegação Principal das 10 Seções">
+            <ul class="pedro_nav_lista">
+                <li class="pedro_nav_item"><a href="#sec-panorama" class="pedro_nav_link">01. Panorama</a></li>
+                <li class="pedro_nav_item"><a href="#sec-ameacas" class="pedro_nav_link">02. Ameaças Web</a></li>
+                <li class="pedro_nav_item"><a href="#sec-arquitetura" class="pedro_nav_link">03. Defesa Zero Trust</a></li>
+                <li class="pedro_nav_item"><a href="#sec-ferramentas" class="pedro_nav_link">04. Arsenal Pentest</a></li>
+                <li class="pedro_nav_item"><a href="#sec-owasp" class="pedro_nav_link">05. OWASP Top 10</a></li>
+                <li class="pedro_nav_item"><a href="#sec-soc" class="pedro_nav_link">06. Painel SOC</a></li>
+                <li class="pedro_nav_item"><a href="#sec-galeria" class="pedro_nav_link">07. Topologias</a></li>
+                <li class="pedro_nav_item"><a href="#sec-auditoria" class="pedro_nav_link">08. Checklist Pentest</a></li>
+                <li class="pedro_nav_item"><a href="#sec-evidencias" class="pedro_nav_link">09. Lab Evidências</a></li>
+                <li class="pedro_nav_item"><a href="#sec-faq" class="pedro_nav_link">10. FAQ &amp; Bug Bounty</a></li>
+            </ul>
+        </nav>
+
+        <!-- Wrapper estrutural obrigatório #wrap -->
+        <div id="wrap" class="pedro_content_wrap">
+
+            <!-- TAG SEMÂNTICA ÚNICA 3: <main> -->
+            <main class="pedro_main">
+
+                <!-- =================================================================
+                     SEÇÃO 1: #sec-panorama (Banner + <article> + <aside>)
+                     ================================================================= -->
+                <section id="sec-panorama" class="pedro_section">
+                    <div class="pedro_section_head">
+                        <span class="pedro_section_tag">SEÇÃO 01 // THREAT LANDSCAPE</span>
+                        <h2 class="pedro_section_title">Panorama Global de Inteligência de Ameaças Cibernéticas</h2>
+                    </div>
+
+                    <div class="pedro_banner_hero">
+                        <img src="img/banner-panorama.jpg" alt="Centro de Operações de Segurança Cibernética e Mapa de Ameaças Globais" class="pedro_banner_img">
+                        <div class="pedro_banner_overlay">
+                            <!-- CSS INLINE 2 de 3 -->
+                            <span class="kaue_code_badge" style="background-color: rgba(175, 35, 40, 0.148); color: #b91010; border-color: #b91010;">RELATÓRIO EXECUTIVO 2026</span>
+                            <h3 class="pedro_banner_heading">A Evolução dos Ataques Cibernéticos Patrocinados e Ransomware-as-a-Service (RaaS)</h3>
+                            <p class="pedro_banner_desc">Organizações modernas enfrentam campanhas persistentes avançadas (APTs) que exploram cadeias de suprimentos de software, APIs mal autenticadas e credenciais vazadas em mercados clandestinos.</p>
+                        </div>
+                    </div>
+
+                    <div class="pedro_panorama_layout">
+                        <!-- Uso semântico de <article> -->
+                        <article class="pedro_article_principal">
+                            <h3 class="pedro_article_title">Convergência entre Red Team, Blue Team e Cyber Threat Intelligence (CTI)</h3>
+                            <p class="pedro_paragrafo">
+                                A segurança da informação contemporânea deixou de ser reativa. Em arquiteturas corporativas distribuídas em múltiplos provedores de nuvem, a superfície de ataque expandiu-se drasticamente. O modelo tradicional de perímetro estático foi substituído pela validação contínua de identidade, telemetria de endpoints (EDR/XDR) e caça proativa a ameaças (<em>Threat Hunting</em>).
+                            </p>
+                            <p class="pedro_paragrafo">
+                                A integração do framework <span class="kaue_code_badge">MITRE ATT&amp;CK</span> permite catalogar Táticas, Técnicas e Procedimentos (TTPs) de grupos hostis. Enquanto equipes de <strong>Red Team</strong> simulam adversários reais para testar controles defensivos, o <strong>Blue Team</strong> aprimora regras de correlação SIEM e playbooks SOAR para reduzir o Tempo Médio de Detecção (MTTD) e o Tempo Médio de Resposta (MTTR).
+                            </p>
+                            <blockquote class="pedro_quote_intel">
+                                "A inteligência de ameaças acionável transforma indicadores isolados de comprometimento (IoCs) em defesas preditivas automatizadas antes que a exfiltração de dados ocorra."
+                            </blockquote>
+                            <div class="pedro_metricas_panorama">
+                                <div class="pedro_metrica_item">
+                                    <span class="pedro_metrica_valor">204 dias</span>
+                                    <span class="pedro_metrica_rotulo">Média global para identificar uma intrusão furtiva sem SOC 24/7</span>
+                                </div>
+                                <div class="pedro_metrica_item">
+                                    <span class="pedro_metrica_valor">68%</span>
+                                    <span class="pedro_metrica_rotulo">Das violações envolvem o fator humano, engenharia social ou roubo de sessão</span>
+                                </div>
+                                <div class="pedro_metrica_item">
+                                    <span class="pedro_metrica_valor">+310%</span>
+                                    <span class="pedro_metrica_rotulo">Crescimento em ataques direcionados a APIs REST e GraphQL</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Uso semântico de <aside> -->
+                        <aside class="pedro_aside_alertas" aria-label="Boletim Rápido de CVEs e Alertas">
+                            <h3 class="pedro_aside_title">Boletim CISA KEV &amp; Alertas</h3>
+                            <ul class="pedro_aside_lista">
+                                <li class="pedro_aside_item">
+                                    <span class="kaue_code_badge">CVE-2026-1042</span>
+                                    <strong>RCE em Gateways VPN Edge</strong>
+                                    <p>Deserialização insegura permite execução remota de código como root sem autenticação prévia.</p>
+                                </li>
+                                <li class="pedro_aside_item">
+                                    <span class="kaue_code_badge">CVE-2026-0891</span>
+                                    <strong>Bypass de MFA em OAuth 2.0</strong>
+                                    <p>Manipulação de tokens JWT com algoritmo <span class="kaue_code_badge">none</span> ou chave pública forjada.</p>
+                                </li>
+                                <li class="pedro_aside_item">
+                                    <span class="kaue_code_badge">CVE-2025-9941</span>
+                                    <strong>Escalação de Privilégio Kernel Linux</strong>
+                                    <p>Condição de corrida (Race Condition) no subsistema netfilter explorada localmente.</p>
+                                </li>
+                            </ul>
+                        </aside>
+                    </div>
+
+                    <div class="joelson_retorno_container">
+                        <a href="#topo" class="pedro_btn_topo">&uarr; Voltar ao topo</a>
+                    </div>
+                </section>
+
+                <!-- =================================================================
+                     SEÇÃO 2: #sec-ameacas (4 Cards de Ataques Web com imagens locais)
+                     ================================================================= -->
+                <section id="sec-ameacas" class="pedro_section">
+                    <div class="pedro_section_head">
+                        <span class="pedro_section_tag">SEÇÃO 02 // WEB EXPLOITATION VECTORS</span>
+                        <h2 class="pedro_section_title">Análise Técnica de Vetores Críticos de Ataques Web</h2>
+                        <p class="pedro_section_subtitle">Estudo detalhado dos quatro principais mecanismos de exploração contra aplicações e infraestruturas web.</p>
+                    </div>
+
+                    <div class="joelson_cards_wrapper">
+                        <!-- Card 1: SQL Injection -->
+                        <article class="joelson_card">
+                            <img src="img/ataque-sqli.png" alt="Ilustração técnica de ataque SQL Injection em banco de dados relacional" class="joelson_card_img">
+                            <div class="joelson_card_body">
+                                <span class="kaue_code_badge">CWE-89 // INJECTION</span>
+                                <h3 class="joelson_card_title">SQL Injection (SQLi)</h3>
+                                <p class="joelson_card_text">
+                                    Ocorre quando entradas fornecidas pelo usuário são concatenadas diretamente em comandos SQL dinâmicos sem sanitização ou parametrização, permitindo ao atacante manipular consultas no banco de dados.
+                                </p>
+                                <p class="joelson_card_mitigacao">
+                                    <strong>Mitigação:</strong> Uso estrito de <em>Prepared Statements</em> (consultas parametrizadas), validação por lista branca e princípio do menor privilégio na conta do SGBD.
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Card 2: Cross-Site Scripting (XSS) -->
+                        <article class="joelson_card">
+                            <img src="img/ataque-xss.png" alt="Diagrama de ataque Cross-Site Scripting injetando payload JavaScript no navegador" class="joelson_card_img">
+                            <div class="joelson_card_body">
+                                <span class="kaue_code_badge">CWE-79 // CLIENT-SIDE</span>
+                                <h3 class="joelson_card_title">Cross-Site Scripting (XSS)</h3>
+                                <p class="joelson_card_text">
+                                    Injeção de scripts maliciosos (Armazenado, Refletido ou DOM-based) executados no contexto do navegador da vítima, possibilitando sequestro de cookies de sessão, defacement e redirecionamento.
+                                </p>
+                                <p class="joelson_card_mitigacao">
+                                    <strong>Mitigação:</strong> Codificação contextual de saída (Output Encoding), implementação de cabeçalhos <span class="kaue_code_badge">Content-Security-Policy (CSP)</span> e flag <span class="kaue_code_badge">HttpOnly</span>.
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Card 3: DDoS -->
+                        <article class="joelson_card">
+                            <img src="img/ataque-ddos.png" alt="Representação de botnet executando ataque distribuído de negação de serviço DDoS" class="joelson_card_img">
+                            <div class="joelson_card_body">
+                                <span class="kaue_code_badge">CWE-400 // AVAILABILITY</span>
+                                <h3 class="joelson_card_title">Distributed Denial of Service (DDoS)</h3>
+                                <p class="joelson_card_text">
+                                    Exaustão de recursos de rede (volumétrico como amplificação DNS/UDP), pilha de protocolos (SYN Flood) ou camada de aplicação (HTTP/2 Rapid Reset) através de botnets distribuídas globalmente.
+                                </p>
+                                <p class="joelson_card_mitigacao">
+                                    <strong>Mitigação:</strong> Redes Anycast CDN, Scrubbing Centers de mitigação BGP, Rate Limiting adaptativo no WAF e proteção contra exaustão de conexões.
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Card 4: Spear Phishing & AitM -->
+                        <article class="joelson_card">
+                            <img src="img/ataque-phishing.png" alt="Fluxo de ataque Adversary-in-the-Middle Phishing capturando tokens de sessão" class="joelson_card_img">
+                            <div class="joelson_card_body">
+                                <span class="kaue_code_badge">T1566 // INITIAL ACCESS</span>
+                                <h3 class="joelson_card_title">Phishing &amp; Proxy reverso (AitM)</h3>
+                                <p class="joelson_card_text">
+                                    Campanhas de engenharia social que utilizam proxies reversos transparentes (como Evilginx) para interceptar credenciais e cookies de sessão já autenticados com MFA baseado em OTP/SMS.
+                                </p>
+                                <p class="joelson_card_mitigacao">
+                                    <strong>Mitigação:</strong> Adoção de autenticação resistente a phishing padrão <span class="kaue_code_badge">FIDO2 / WebAuthn</span> (Passkeys/YubiKey), DMARC/DKIM/SPF em modo <em>reject</em>.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="joelson_retorno_container">
+                        <a href="#topo" class="pedro_btn_topo">&uarr; Voltar ao topo</a>
+                    </div>
+                </section>
+
+                <!-- =================================================================
+                     SEÇÃO 3: #sec-arquitetura (Defesa em Camadas aplicando GRID B: 1fr 2fr 1fr)
+                     ================================================================= -->
+                <section id="sec-arquitetura" class="pedro_section">
+                    <div class="pedro_section_head">
+                        <span class="pedro_section_tag">SEÇÃO 03 // ZERO TRUST &amp; DEFENSE IN DEPTH (GRID B)</span>
+                        <h2 class="pedro_section_title">Arquitetura de Defesa em Camadas e Modelo Zero Trust (NIST SP 800-207)</h2>
+                        <p class="pedro_section_subtitle">Estrutura distribuída em colunas assimétricas (<span class="kaue_code_badge">1fr 2fr 1fr</span>) demonstrando controles preventivos, núcleo de engenharia de segurança e governança.</p>
+                    </div>
+
+                    <!-- APLICAÇÃO OBRIGATÓRIA DO GRID B (Proporções diferentes: 1fr 2fr 1fr) -->
+                    <div class="kaue_grid_b_arquitetura">
+                        <!-- Coluna 1 (1fr) -->
+                        <div class="kaue_arquitetura_col">
+                            <h3 class="kaue_col_title">1. Borda &amp; Identidade (1fr)</h3>
+                            <p class="pedro_paragrafo">A primeira linha de contenção valida cada requisição antes de conceder acesso a qualquer microsserviço interno.</p>
+                            <ul class="kaue_lista_controles">
+                                <li><strong>IAM &amp; PAM:</strong> Gestão de acesso privilegiado com sessão Just-In-Time (JIT).</li>
+                                <li><strong>Postura do Dispositivo:</strong> Verificação de criptografia de disco, patch level e EDR ativo antes do handshake VPN/ZTNA.</li>
+                                <li><strong>WAF &amp; API Gateway:</strong> Inspeção profunda de payloads JSON/XML e validação estrita de OpenAPI Schema.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Coluna Central (2fr) -->
+                        <div class="kaue_arquitetura_col kaue_arquitetura_destaque">
+                            <h3 class="kaue_col_title">2. Núcleo de Defesa em Profundidade &amp; Microssegmentação (2fr)</h3>
+                            <p class="pedro_paragrafo">
+                                O princípio fundamental do <strong>Zero Trust ("Nunca confie, sempre verifique")</strong> assume que a rede interna já pode estar comprometida. Portanto, nenhuma entidade — seja interna ou externa — possui confiança implícita baseada apenas em sua localização de rede ou endereço IP.
+                            </p>
+                            <div class="kaue_camadas_box">
+                                <div class="kaue_camada_item">
+                                    <strong>Camada de Rede &amp; mTLS:</strong> Autenticação mútua por certificados X.509 de curta duração entre containers e Service Mesh, bloqueando movimentação lateral (East-West Traffic).
+                                </div>
+                                <div class="kaue_camada_item">
+                                    <strong>Camada de Aplicação (DevSecOps):</strong> Pipeline CI/CD integrado com análise estática de código (SAST), análise de composição de software (SCA), detecção de segredos e testes dinâmicos (DAST).
+                                </div>
+                                <div class="kaue_camada_item">
+                                    <strong>Camada de Dados &amp; Criptografia:</strong> Dados sensíveis protegidos em repouso com <span class="kaue_code_badge">AES-256</span> via KMS/HSM dedicado, tokenização de dados PII e prevenção contra perda de dados (DLP).
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coluna 3 (1fr) -->
+                        <div class="kaue_arquitetura_col">
+                            <h3 class="kaue_col_title">3. Governança &amp; Resiliência (1fr)</h3>
+                            <p class="pedro_paragrafo">Garantia de conformidade regulatória e recuperação rápida diante de incidentes catastróficos.</p>
+                            <ul class="kaue_lista_controles">
+                                <li><strong>ISO/IEC 27001 &amp; NIST CSF:</strong> Gestão contínua de riscos e auditoria de controles técnicos.</li>
+                                <li><strong>LGPD &amp; Privacidade:</strong> Anonimização de dados pessoais e relatórios de impacto (RIPD).</li>
+                                <li><strong>Backups Imutáveis (3-2-1-1):</strong> Cópias air-gapped com bloqueio WORM contra criptografia por ransomware.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="joelson_retorno_container">
+                        <a href="#topo" class="pedro_btn_topo">&uarr; Voltar ao topo</a>
+                    </div>
+                </section>
+
+                <!-- =================================================================
+                     SEÇÃO 4: #sec-ferramentas (Arsenal Pentest aplicando GRID A: repeat(3, 1fr))
+                     ================================================================= -->
+                <section id="sec-ferramentas" class="pedro_section">
+                    <div class="pedro_section_head">
+                        <span class="pedro_section_tag">SEÇÃO 04 // OFFENSIVE SECURITY ARSENAL (GRID A)</span>
+                        <h2 class="pedro_section_title">Arsenal de Ferramentas de Pentest e Auditoria de Segurança</h2>
+                        <p class="pedro_section_subtitle">Grade estruturada com colunas de mesma proporção (<span class="kaue_code_badge">repeat(3, 1fr)</span>) apresentando as ferramentas essenciais de Red Team e AppSec.</p>
+                    </div>
+
+                    <!-- APLICAÇÃO OBRIGATÓRIA DO GRID A (repeat() e fr de mesma proporção) -->
+                    <div class="pedro_grid_a_ferramentas">
+                        <div class="pedro_tool_card">
+                            <span class="kaue_code_badge">RECONHECIMENTO DE REDE</span>
+                            <h3 class="pedro_tool_title">Nmap (Network Mapper)</h3>
+                            <p class="pedro_tool_desc">Descoberta de hosts, varredura de portas TCP/UDP, detecção de versão de serviços, fingerprinting de sistema operacional e execução de scripts NSE para auditoria de vulnerabilidades.</p>
+                            <code class="pedro_tool_cmd">nmap -sC -sV -O -p- 10.10.14.25</code>
+                        </div>
+
+                        <div class="pedro_tool_card">
+                            <span class="kaue_code_badge">WEB APP PROXY / PENTEST</span>
+                            <h3 class="pedro_tool_title">Burp Suite Professional</h3>
+                            <p class="pedro_tool_desc">Interceptação e manipulação de requisições HTTP/HTTPS e WebSockets, fuzzing automatizado com Intruder, análise de entropia de tokens com Sequencer e repetição de payloads.</p>
+                            <code class="pedro_tool_cmd">Proxy Listener: 127.0.0.1:8080</code>
+                        </div>
+
+                        <div class="pedro_tool_card">
+                            <span class="kaue_code_badge">EXPLORAÇÃO &amp; C2</span>
+                            <h3 class="pedro_tool_title">Metasploit Framework</h3>
+                            <p class="pedro_tool_desc">Plataforma modular para desenvolvimento e execução de exploits, geração de payloads furtivos com MSFVenom, pós-exploração via Meterpreter e pivoting em sub-redes internas.</p>
+                            <code class="pedro_tool_cmd">msfconsole -q -x "use exploit/multi/handler"</code>
+                        </div>
+
+                        <div class="pedro_tool_card">
+                            <span class="kaue_code_badge">ANÁLISE DE PACOTES</span>
+                            <h3 class="pedro_tool_title">Wireshark &amp; TShark</h3>
+                            <p class="pedro_tool_desc">Inspeção forense de tráfego de rede em arquivos PCAP, reconstrução de fluxos TCP, identificação de exfiltração DNS Tunneling, beacons C2 e credenciais transmitidas em texto claro.</p>
+                            <code class="pedro_tool_cmd">http.request.method == "POST" || dns</code>
+                        </div>
+
+                        <div class="pedro_tool_card">
+                            <span class="kaue_code_badge">DETECÇÃO DE ENDPOINT</span>
+                            <h3 class="pedro_tool_title">Wazuh SIEM / XDR</h3>
+                            <p class="pedro_tool_desc">Monitoramento de integridade de arquivos (FIM), coleta de logs Syslog/EventChannel, detecção de rootkits, avaliação de configuração (SCA) e resposta ativa automatizada.</p>
+                            <code class="pedro_tool_cmd">ossec-control status &amp;&amp; wazuh-logtest</code>
+                        </div>
+
+                        <div class="pedro_tool_card">
+                            <span class="kaue_code_badge">AUDITORIA DE BANCO DE DADOS</span>
+                            <h3 class="pedro_tool_title">SQLMap Automated Tool</h3>
+                            <p class="pedro_tool_desc">Detecção e exploração avançada de falhas SQL Injection (Boolean-based blind, Time-based blind, Error-based, UNION query e Out-of-band) com suporte a tamper scripts de evasão.</p>
+                            <code class="pedro_tool_cmd">sqlmap -u "https://alvo.local/item?id=1" --dbs --batch</code>
+                        </div>
+                    </div>
+
+                    <div class="joelson_retorno_container">
+                        <a href="#topo" class="pedro_btn_topo">&uarr; Voltar ao topo</a>
+                    </div>
+                </section>
+
+                <!-- =================================================================
+                     SEÇÃO 5: #sec-owasp (Tabela 10x6 Semântica do OWASP Top 10)
+                     ================================================================= -->
+                <section id="sec-owasp" class="pedro_section">
+                    <div class="pedro_section_head">
+                        <span class="pedro_section_tag">SEÇÃO 05 // APPLICATION SECURITY STANDARD</span>
+                        <h2 class="pedro_section_title">Matriz Completa de Riscos Críticos OWASP Top 10</h2>
+                        <p class="pedro_section_subtitle">Tabela técnica 10x6 (10 linhas no corpo por 6 colunas) com classificação oficial, CWEs mapeadas, severidade CVSS, vetor de exploração e diretriz de mitigação.</p>
+                    </div>
+
+                    <div class="kaue_tabela_responsiva">
+                        <table class="kaue_tabela">
+                            <caption class="kaue_tabela_caption">Tabela Oficial de Referência: OWASP Top 10 Application Security Risks — Análise Comparativa de Engenharia de Segurança</caption>
+                            <thead class="kaue_tabela_thead">
+                                <tr>
+                                    <th scope="col">Código</th>
+                                    <th scope="col">Categoria da Vulnerabilidade</th>
+                                    <th scope="col">Principais CWEs</th>
+                                    <th scope="col">Severidade / CVSS Base</th>
+                                    <th scope="col">Cenário Real de Exploração</th>
+                                    <th scope="col">Controle Técnico de Mitigação</th>
+                                </tr>
+                            </thead>
+                            <tbody class="kaue_tabela_tbody">
+                                <tr>
+                                    <td><span class="kaue_code_badge">A01:2021</span></td>
+                                    <td><strong>Broken Access Control</strong></td>
+                                    <td>CWE-200, CWE-284, CWE-639</td>
+                                    <td>Crítica (9.1)</td>
+                                    <td>Manipulação de parâmetros IDOR na URL ou JWT para acessar registros financeiros de outros usuários.</td>
+                                    <td>Controle de acesso baseado em atributos/funções (RBAC/ABAC) validado no servidor e negação por padrão.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kaue_code_badge">A02:2021</span></td>
+                                    <td><strong>Cryptographic Failures</strong></td>
+                                    <td>CWE-259, CWE-327, CWE-331</td>
+                                    <td>Alta (8.2)</td>
+                                    <td>Armazenamento de senhas com hashes rápidos (MD5/SHA1) sem salt ou tráfego interno sem TLS.</td>
+                                    <td>Uso de Argon2id ou bcrypt para senhas, TLS 1.3 obrigatório com HSTS e chaves gerenciadas em cofre.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kaue_code_badge">A03:2021</span></td>
+                                    <td><strong>Injection</strong></td>
+                                    <td>CWE-79, CWE-89, CWE-73</td>
+                                    <td>Crítica (9.8)</td>
+                                    <td>Execução de comandos SQL, NoSQL, OS Command ou LDAP através de entradas não sanitizadas.</td>
+                                    <td>Consultas parametrizadas (Prepared Statements), ORMs seguros e validação rigorosa de schema.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kaue_code_badge">A04:2021</span></td>
+                                    <td><strong>Insecure Design</strong></td>
+                                    <td>CWE-209, CWE-256, CWE-501</td>
+                                    <td>Alta (7.8)</td>
+                                    <td>Fluxo de recuperação de senha baseado apenas em perguntas previsíveis ou ausência de limite de compra.</td>
+                                    <td>Modelagem de Ameaças (STRIDE) na fase de concepção e padrões de arquitetura segura por design.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kaue_code_badge">A05:2021</span></td>
+                                    <td><strong>Security Misconfiguration</strong></td>
+                                    <td>CWE-16, CWE-611, CWE-1004</td>
+                                    <td>Alta (7.5)</td>
+                                    <td>Buckets S3 públicos, contas padrão ativas, stack traces detalhados em produção ou XML External Entities (XXE).</td>
+                                    <td>Hardening automatizado via IaC (Terraform/Ansible), desativação de recursos desnecessários e revisão CIS Benchmarks.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kaue_code_badge">A06:2021</span></td>
+                                    <td><strong>Vulnerable and Outdated Components</strong></td>
+                                    <td>CWE-1035, CWE-1104</td>
+                                    <td>Alta (8.6)</td>
+                                    <td>Uso de bibliotecas de terceiros vulneráveis (ex: Log4Shell) sem inventário de dependências.</td>
+                                    <td>Geração contínua de SBOM (Software Bill of Materials) e verificação automatizada com SCA no pipeline.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kaue_code_badge">A07:2021</span></td>
+                                    <td><strong>Identification and Authentication Failures</strong></td>
+                                    <td>CWE-287, CWE-384, CWE-798</td>
+                                    <td>Crítica (9.0)</td>
+                                    <td>Ataques de Credential Stuffing, força bruta sem bloqueio ou IDs de sessão expostos na URL.</td>
+                                    <td>Autenticação Multifator (MFA FIDO2), proteção contra senhas vazadas (HIBP) e rotação segura de sessão.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kaue_code_badge">A08:2021</span></td>
+                                    <td><strong>Software and Data Integrity Failures</strong></td>
+                                    <td>CWE-345, CWE-502, CWE-829</td>
+                                    <td>Alta (8.4)</td>
+                                    <td>Atualizações de software sem assinatura digital, plugins de CDNs comprometidos ou deserialização insegura.</td>
+                                    <td>Verificação de integridade criptográfica (SRI/GPG), pipelines CI/CD assinados (SLSA) e proibição de serialização nativa.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kaue_code_badge">A09:2021</span></td>
+                                    <td><strong>Security Logging and Monitoring Failures</strong></td>
+                                    <td>CWE-117, CWE-223, CWE-778</td>
+                                    <td>Média (6.8)</td>
+                                    <td>Falhas de login, elevações de privilégio e varreduras não são registradas ou logs ficam apenas localmente.</td>
+                                    <td>Centralização de logs imutáveis em SIEM em tempo real, trilhas de auditoria sincronizadas com NTP e alertas SOC.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kaue_code_badge">A10:2021</span></td>
+                                    <td><strong>Server-Side Request Forgery (SSRF)</strong></td>
+                                    <td>CWE-918</td>
+                                    <td>Alta (8.8)</td>
+                                    <td>Aplicação web busca uma URL fornecida pelo atacante e expõe metadados internos de nuvem (<span class="kaue_code_badge">169.254.169.254</span>).</td>
+                                    <td>Isolamento de rede, bloqueio de faixas de IP privadas (RFC 1918/Link-Local), IMDSv2 obrigatório e lista branca de destinos.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="joelson_retorno_container">
+                        <a href="#topo" class="pedro_btn_topo">&uarr; Voltar ao topo</a>
+                    </div>
+                </section>
+
+                <!-- =================================================================
+                     SEÇÃO 6: #sec-soc (Painel Telemétrico SOC aplicando GRID C: grid-template-areas)
+                     ================================================================= -->
+                <section id="sec-soc" class="pedro_section">
+                    <div class="pedro_section_head">
+                        <span class="pedro_section_tag">SEÇÃO 06 // SECURITY OPERATIONS CENTER (GRID C)</span>
+                        <h2 class="pedro_section_title">Painel Telemétrico de Operações de Segurança (SOC Tier 3)</h2>
+                        <p class="pedro_section_subtitle">Layout estruturado com <span class="kaue_code_badge">grid-template-areas</span> e filhos associados via <span class="kaue_code_badge">grid-area</span>, reorganizado automaticamente em telas menores via Media Queries.</p>
+                    </div>
+
+                    <!-- APLICAÇÃO OBRIGATÓRIA DO GRID C (grid-template-areas + grid-area nos filhos) -->
+                    <div class="joelson_grid_c_soc">
+                        <!-- Área 1: Cabecalho do SOC -->
+                        <div class="joelson_soc_box joelson_area_topo">
+                            <div class="joelson_soc_status_line">
+                                <span><strong>UNIDADE DE MONITORAMENTO:</strong> SOC-BR-CURITIBA-01</span>
+                                <span><strong>INGESTÃO SIEM:</strong> 14.820 EPS (Eventos Por Segundo)</span>
+                                <span><strong>DISPONIBILIDADE:</strong> 99.998%</span>
+                            </div>
+                        </div>
+
+                        <!-- Área 2: KPIs de Resposta -->
+                        <div class="joelson_soc_box joelson_area_kpis">
+                            <h3 class="joelson_soc_box_title">Indicadores de Performance (SLA)</h3>
+                            <div class="joelson_kpi_grid">
+                                <div class="joelson_kpi_card">
+                                    <span class="joelson_kpi_num">4m 12s</span>
+                                    <span class="joelson_kpi_label">MTTD (Tempo Médio de Detecção)</span>
+                                </div>
+                                <div class="joelson_kpi_card">
+                                    <span class="joelson_kpi_num">11m 45s</span>
+                                    <span class="joelson_kpi_label">MTTR (Tempo Médio de Contenção)</span>
+                                </div>
+                                <div class="joelson_kpi_card">
+                                    <span class="joelson_kpi_num">98.4%</span>
+                                    <span class="joelson_kpi_label">Automação Playbooks SOAR</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Área 3: Feed de Eventos SIEM em Tempo Real -->
+                        <div class="joelson_soc_box joelson_area_feed">
+                            <h3 class="joelson_soc_box_title">Correlação de Eventos SIEM &amp; Regras Sigma</h3>
+                            <ul class="joelson_log_list">
+                                <li class="joelson_log_entry">
+                                    <span class="kaue_code_badge">11:42:09 UTC</span>
+                                    <strong>[HIGH]</strong> Regra Sigma <span class="kaue_code_badge">proc_creation_win_powershell_base64</span> acionada no host <span class="kaue_code_badge">SRV-AD-DC02</span>. Processo isolado via EDR.
+                                </li>
+                                <li class="joelson_log_entry">
+                                    <span class="kaue_code_badge">11:39:51 UTC</span>
+                                    <strong>[MEDIUM]</strong> Múltiplas falhas Kerberos Pre-Authentication (Event ID 4771) originadas de <span class="kaue_code_badge">10.24.8.119</span> (Possível AS-REP Roasting).
+                                </li>
+                                <li class="joelson_log_entry">
+                                    <span class="kaue_code_badge">11:35:18 UTC</span>
+                                    <strong>[BLOCKED]</strong> WAF bloqueou 412 requisições contendo padrão SQLi <span class="kaue_code_badge">UNION SELECT NULL,@@version</span> contra <span class="kaue_code_badge">/api/v2/orders</span>.
+                                </li>
+                                <li class="joelson_log_entry">
+                                    <span class="kaue_code_badge">11:28:04 UTC</span>
+                                    <strong>[INFO]</strong> Varredura automática de vulnerabilidades autenticada concluída no cluster Kubernetes de produção (0 CVEs críticas pendentes).
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Área 4: Saúde dos Sensores e Firewall -->
+                        <div class="joelson_soc_box joelson_area_sensores">
+                            <h3 class="joelson_soc_box_title">Status dos Sensores</h3>
+                            <ul class="joelson_sensor_list">
+                                <li><span>Firewall NGFW Cluster</span> <strong class="joelson_tag_ok">ONLINE</strong></li>
+                                <li><span>Suricata IDS/IPS</span> <strong class="joelson_tag_ok">ONLINE</strong></li>
+                                <li><span>Agentes EDR (1.420 hosts)</span> <strong class="joelson_tag_ok">99.8% ATIVOS</strong></li>
+                                <li><span>Coletor NetFlow / IPFIX</span> <strong class="joelson_tag_ok">SINCRONIZADO</strong></li>
+                                <li><span>Honeypot SSH/SMB</span> <strong class="joelson_tag_warn">ALERTA ATIVO</strong></li>
+                            </ul>
+                        </div>
+
+                        <!-- Área 5: Rodapé de Playbook Ativo -->
+                        <div class="joelson_soc_box joelson_area_rodape">
+                            <p class="joelson_soc_footer_text">
+                                <strong>Playbook SOAR em Execução:</strong> Enriquecimento automático de hashes SHA-256 via VirusTotal Enterprise, consulta de reputação de IP no AbuseIPDB e bloqueio dinâmico nas ACLs de borda.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="joelson_retorno_container">
+                        <a href="#topo" class="pedro_btn_topo">&uarr; Voltar ao topo</a>
+                    </div>
+                </section>
+
+                <!-- =================================================================
+                     SEÇÃO 7: #sec-galeria (Galeria de Diagramas e Topologias de Rede)
+                     ================================================================= -->
+                <section id="sec-galeria" class="pedro_section">
+                    <div class="pedro_section_head">
+                        <span class="pedro_section_tag">SEÇÃO 07 // NETWORK &amp; SECURITY TOPOLOGIES</span>
+                        <h2 class="pedro_section_title">Galeria de Diagramas e Topologias de Segurança de Rede</h2>
+                        <p class="pedro_section_subtitle">Modelos visuais de referência para segmentação de rede, coleta telemétrica, zonas desmilitarizadas (DMZ) e redes de decepção.</p>
+                    </div>
+
+                    <div class="pedro_galeria_grid">
+                        <div class="pedro_galeria_item">
+                            <img src="img/topologia-zero-trust.png" alt="Diagrama de Arquitetura Zero Trust Network Access com broker de identidade e mTLS" class="pedro_galeria_img">
+                            <div class="pedro_galeria_legenda">
+                                <span class="kaue_code_badge">TOPOLOGIA 01</span>
+                                <h3 class="pedro_galeria_titulo">Arquitetura Zero Trust Network Access (ZTNA)</h3>
+                                <p>Isolamento de cargas de trabalho corporativas atrás de um Policy Enforcement Point (PEP) com autenticação contínua.</p>
+                            </div>
+                        </div>
+
+                        <div class="pedro_galeria_item">
+                            <img src="img/diagrama-siem-soc.jpg" alt="Diagrama de pipeline de ingestão de logs SIEM, correlação e orquestração SOAR" class="pedro_galeria_img">
+                            <div class="pedro_galeria_legenda">
+                                <span class="kaue_code_badge">TOPOLOGIA 02</span>
+                                <h3 class="pedro_galeria_titulo">Pipeline de Telemetria SIEM &amp; Orquestração SOAR</h3>
+                                <p>Fluxo de coleta de logs de endpoints, servidores e nuvem com normalização, detecção Sigma e resposta automatizada.</p>
+                            </div>
+                        </div>
+
+                        <div class="pedro_galeria_item">
+                            <img src="img/arquitetura-waf-dmz.png" alt="Topologia de rede segura com Dual Firewall, DMZ, WAF e sub-rede isolada de banco de dados" class="pedro_galeria_img">
+                            <div class="pedro_galeria_legenda">
+                                <span class="kaue_code_badge">TOPOLOGIA 03</span>
+                                <h3 class="pedro_galeria_titulo">Segmentação DMZ com Dual-Firewall &amp; WAF</h3>
+                                <p>Separação física e lógica entre tráfego público, camada de aplicação reversa e sub-rede restrita de persistência de dados.</p>
+                            </div>
+                        </div>
+
+                        <div class="pedro_galeria_item">
+                            <img src="img/rede-honeypot.jpg" alt="Diagrama de rede de decepção com sensores Honeypot para captura de TTPs de invasores" class="pedro_galeria_img">
+                            <div class="pedro_galeria_legenda">
+                                <span class="kaue_code_badge">TOPOLOGIA 04</span>
+                                <h3 class="pedro_galeria_titulo">Malha de Decepção &amp; Honeynet de Alta Interação</h3>
+                                <p>Ambiente controlado com iscas monitoradas para desviar atacantes da rede produtiva e extrair assinaturas inéditas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="joelson_retorno_container">
+                        <a href="#topo" class="pedro_btn_topo">&uarr; Voltar ao topo</a>
+                    </div>
+                </section>
+
+                <!-- =================================================================
+                     SEÇÃO 8: #sec-auditoria (Funcionalidade Interativa 1 - Opção E: Lista Dinâmica de Pentest)
+                     ================================================================= -->
+                <section id="sec-auditoria" class="pedro_section">
+                    <div class="pedro_section_head">
+                        <span class="pedro_section_tag">SEÇÃO 08 // FUNCIONALIDADE INTERATIVA 1 (OPÇÃO E)</span>
+                        <h2 class="pedro_section_title">Gerenciador Dinâmico de Tarefas de Auditoria &amp; Pentest (OWASP WSTG)</h2>
+                        <p class="pedro_section_subtitle">Adicione procedimentos de verificação ao escopo do teste de intrusão, alterne o status entre Pendente e Concluído, edite os itens em tempo real, filtre a visualização ou limpe a lista.</p>
+                    </div>
+
+                    <div class="pedro_auditoria_painel">
+                        <!-- Controles de Adição -->
+                        <div class="pedro_auditoria_input_row">
+                            <input type="text" id="pedro_input_tarefa" class="pedro_input_field" placeholder="Ex: Testar bypass de autenticação em /api/v1/admin (WSTG-ATHN-04)..." aria-label="Nova tarefa de pentest">
+                            <button type="button" id="pedro_btn_add_tarefa" class="pedro_btn_primario">+ Adicionar Tarefa</button>
+                            <button type="button" id="pedro_btn_limpar_todas" class="pedro_btn_perigo">Apagar Todos</button>
+                        </div>
+
+                        <!-- Barra de Contadores e Filtros -->
+                        <div class="pedro_auditoria_toolbar">
+                            <div class="pedro_contadores_box">
+                                <span class="pedro_contador_pill">Total: <strong id="pedro_count_total">0</strong></span>
+                                <span class="pedro_contador_pill pedro_pill_pendente">Pendentes: <strong id="pedro_count_pendentes">0</strong></span>
+                                <span class="pedro_contador_pill pedro_pill_concluido">Concluídos: <strong id="pedro_count_concluidos">0</strong></span>
+                            </div>
+
+                            <div class="pedro_filtros_box" role="group" aria-label="Filtrar tarefas por status">
+                                <button type="button" class="pedro_btn_filtro pedro_filtro_ativo" data-filtro="todos">Todos</button>
+                                <button type="button" class="pedro_btn_filtro" data-filtro="pendente">Pendentes</button>
+                                <button type="button" class="pedro_btn_filtro" data-filtro="concluido">Concluídos</button>
+                            </div>
+                        </div>
+
+                        <!-- Mensagem de feedback de validação rápida da lista -->
+                        <p id="pedro_msg_auditoria" class="pedro_feedback_msg" aria-live="polite"></p>
+
+                        <!-- Lista renderizada dinamicamente via DOM -->
+                        <ul id="pedro_lista_tarefas" class="pedro_tarefas_ul"></ul>
+                    </div>
+
+                    <div class="joelson_retorno_container">
+                        <a href="#topo" class="pedro_btn_topo">&uarr; Voltar ao topo</a>
+                    </div>
+                </section>
+
+                <!-- =================================================================
+                     SEÇÃO 9: #sec-evidencias (Funcionalidade Interativa 2 - Opção C: Laboratório de Evidências em Modal)
+                     ================================================================= -->
+                <section id="sec-evidencias" class="pedro_section">
+                    <div class="pedro_section_head">
+                        <span class="pedro_section_tag">SEÇÃO 09 // FUNCIONALIDADE INTERATIVA 2 (OPÇÃO C)</span>
+                        <h2 class="pedro_section_title">Laboratório de Inspeção Forense de Evidências (Visualizador Modal)</h2>
+                        <p class="pedro_section_subtitle">Registre o título da evidência, descreva os artefatos técnicos encontrados e selecione uma captura de tela do seu computador para inspecionar no modal forense.</p>
+                    </div>
+
+                    <div class="joelson_evidencia_box">
+                        <div class="joelson_form_grid">
+                            <div class="joelson_campo_grupo">
+                                <label for="joelson_evidencia_titulo" class="joelson_label">Título da Evidência / Artefato:</label>
+                                <input type="text" id="joelson_evidencia_titulo" class="pedro_input_field" placeholder="Ex: Captura de Payload XSS Refletido no parâmetro search">
+                            </div>
+
+                            <div class="joelson_campo_grupo">
+                                <label for="joelson_evidencia_arquivo" class="joelson_label">Selecionar Imagem da Evidência Local (<span class="kaue_code_badge">image/*</span>):</label>
+                                <input type="file" id="joelson_evidencia_arquivo" class="pedro_input_file" accept="image/*">
+                            </div>
+
+                            <div class="joelson_campo_grupo joelson_campo_full">
+                                <label for="joelson_evidencia_desc" class="joelson_label">Descrição Técnica e Cadeia de Custódia:</label>
+                                <textarea id="joelson_evidencia_desc" class="pedro_textarea_field" rows="4" placeholder="Descreva o contexto da coleta, hash SHA-256 da evidência, endpoint vulnerável e impacto observado..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="joelson_evidencia_actions">
+                            <button type="button" id="joelson_btn_visualizar_modal" class="pedro_btn_primario">Visualizar Evidência no Modal</button>
+                            <span id="joelson_evidencia_aviso" class="pedro_feedback_msg" aria-live="polite"></span>
+                        </div>
+                    </div>
+
+                    <!-- Janela Modal Oculta por Padrão (Fecha no botão X ou clicando no overlay externo) -->
+                    <div id="joelson_modal_overlay" class="joelson_modal_overlay" aria-hidden="true">
+                        <div class="joelson_modal_card" role="dialog" aria-modal="true" aria-labelledby="joelson_modal_titulo_view">
+                            <div class="joelson_modal_top">
+                                <span class="kaue_code_badge">INSPEÇÃO FORENSE // EVIDÊNCIA CARREGADA</span>
+                                <button type="button" id="joelson_btn_fechar_modal" class="joelson_modal_close" aria-label="Fechar janela modal">&times;</button>
+                            </div>
+                            <div class="joelson_modal_body">
+                                <h3 id="joelson_modal_titulo_view" class="joelson_modal_title">Título da Evidência</h3>
+                                <p id="joelson_modal_desc_view" class="joelson_modal_desc">Descrição técnica da evidência.</p>
+                                <div class="joelson_modal_img_container">
+                                    <img id="joelson_modal_img_view" src="img/banner-panorama.jpg" alt="Pré-visualização da evidência carregada pelo usuário" class="joelson_modal_img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="joelson_retorno_container">
+                        <a href="#topo" class="pedro_btn_topo">&uarr; Voltar ao topo</a>
+                    </div>
+                </section>
+
+                <!-- =================================================================
+                     SEÇÃO 10: #sec-faq (Funcionalidade Interativa 3 - Opção B: FAQ com Busca + Formulário de 12 Campos)
+                     ================================================================= -->
+                <section id="sec-faq" class="pedro_section">
+                    <div class="pedro_section_head">
+                        <span class="pedro_section_tag">SEÇÃO 10 // FUNCIONALIDADE INTERATIVA 3 (OPÇÃO B) + BUG BOUNTY FORM</span>
+                        <h2 class="pedro_section_title">Base de Conhecimento Interativa (FAQ) &amp; Reporte de Vulnerabilidades</h2>
+                        <p class="pedro_section_subtitle">Consulte nossa base técnica dividida em duas categorias com busca em tempo real ou submeta uma falha diretamente ao programa de Bug Bounty.</p>
+                    </div>
+
+                    <!-- PARTE 1 DA SEÇÃO 10: FAQ / ACCORDION COM BUSCA EM TEMPO REAL (10 Perguntas em 2 Categorias) -->
+                    <div class="kaue_faq_container">
+                        <div class="kaue_faq_search_bar">
+                            <label for="kaue_input_busca_faq" class="joelson_label">Pesquisar na Base de Conhecimento (Filtro em Tempo Real):</label>
+                            <input type="text" id="kaue_input_busca_faq" class="pedro_input_field" placeholder="Digite um termo técnico (ex: SIEM, CVSS, Zero Trust, SQLi, EDR, JWT, Pentest)...">
+                        </div>
+
+                        <!-- Mensagem automática caso nenhuma pergunta corresponda -->
+                        <div id="kaue_faq_sem_resultados" class="kaue_faq_empty" hidden>
+                            Nenhuma pergunta técnica encontrada para o termo pesquisado. Tente buscar por palavras-chave como "OWASP", "Pentest", "SOC" ou "Criptografia".
+                        </div>
+
+                        <div class="kaue_faq_categorias_grid">
+                            <!-- Categoria 1: 5 Perguntas -->
+                            <div class="kaue_faq_categoria_bloco">
+                                <h3 class="kaue_faq_cat_titulo">Categoria A: Segurança Ofensiva &amp; AppSec (Red Team)</h3>
+
+                                <div class="kaue_faq_item">
+                                    <button type="button" class="kaue_faq_pergunta" aria-expanded="false">
+                                        <span class="kaue_faq_texto">1. Qual a diferença entre Pentest Black Box, Grey Box e White Box?</span>
+                                        <span class="kaue_faq_icone">+</span>
+                                    </button>
+                                    <div class="kaue_faq_resposta">
+                                        <p>No <strong>Black Box</strong>, o pentester não possui conhecimento prévio da infraestrutura, simulando um atacante externo real. No <strong>Grey Box</strong>, há acesso parcial (como uma conta de usuário padrão ou documentação de API) para avaliar escalação de privilégios. No <strong>White Box</strong>, o auditor tem acesso completo ao código-fonte, diagramas de arquitetura e configurações para uma revisão exaustiva.</p>
+                                    </div>
+                                </div>
+
+                                <div class="kaue_faq_item">
+                                    <button type="button" class="kaue_faq_pergunta" aria-expanded="false">
+                                        <span class="kaue_faq_texto">2. Como funciona a pontuação de severidade no padrão CVSS v3.1?</span>
+                                        <span class="kaue_faq_icone">+</span>
+                                    </button>
+                                    <div class="kaue_faq_resposta">
+                                        <p>O <em>Common Vulnerability Scoring System (CVSS)</em> calcula uma nota de <strong>0.0 a 10.0</strong> combinando métricas de explorabilidade (Vetor de Ataque, Complexidade, Privilégios Necessários, Interação do Usuário) e métricas de impacto na tríade CIA (Confidencialidade, Integridade e Disponibilidade). Notas entre 9.0 e 10.0 são classificadas como Críticas.</p>
+                                    </div>
+                                </div>
+
+                                <div class="kaue_faq_item">
+                                    <button type="button" class="kaue_faq_pergunta" aria-expanded="false">
+                                        <span class="kaue_faq_texto">3. Por que tokens JWT mal implementados representam risco de autenticação?</span>
+                                        <span class="kaue_faq_icone">+</span>
+                                    </button>
+                                    <div class="kaue_faq_resposta">
+                                        <p>Se o servidor aceitar o algoritmo <span class="kaue_code_badge">none</span>, não validar a assinatura criptográfica, usar segredos HMAC fracos suscetíveis a força bruta ou permitir confusão de algoritmos (<span class="kaue_code_badge">RS256</span> para <span class="kaue_code_badge">HS256</span>), um atacante pode forjar reivindicações (claims) como <span class="kaue_code_badge">"role": "admin"</span> e assumir controle total.</p>
+                                    </div>
+                                </div>
+
+                                <div class="kaue_faq_item">
+                                    <button type="button" class="kaue_faq_pergunta" aria-expanded="false">
+                                        <span class="kaue_faq_texto">4. O que caracteriza uma vulnerabilidade IDOR (Insecure Direct Object Reference)?</span>
+                                        <span class="kaue_faq_icone">+</span>
+                                    </button>
+                                    <div class="kaue_faq_resposta">
+                                        <p>Inserida na categoria <strong>A01 (Broken Access Control)</strong> do OWASP Top 10, a falha IDOR ocorre quando uma aplicação utiliza identificadores fornecidos pelo cliente (como <span class="kaue_code_badge">/faturas?id=1042</span>) para buscar objetos diretamente no banco sem verificar se o usuário autenticado é realmente o proprietário daquele registro.</p>
+                                    </div>
+                                </div>
+
+                                <div class="kaue_faq_item">
+                                    <button type="button" class="kaue_faq_pergunta" aria-expanded="false">
+                                        <span class="kaue_faq_texto">5. Como prevenir ataques de Server-Side Request Forgery (SSRF) em nuvem?</span>
+                                        <span class="kaue_faq_icone">+</span>
+                                    </button>
+                                    <div class="kaue_faq_resposta">
+                                        <p>Deve-se validar estritamente URLs contra uma lista branca de domínios permitidos, bloquear conexões de saída para faixas privadas (RFC 1918 e loopback), desabilitar redirecionamentos HTTP automáticos e exigir <strong>IMDSv2</strong> com token de sessão para proteger o serviço de metadados da instância.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Categoria 2: 5 Perguntas -->
+                            <div class="kaue_faq_categoria_bloco">
+                                <h3 class="kaue_faq_cat_titulo">Categoria B: Monitoramento SOC &amp; Defesa (Blue Team)</h3>
+
+                                <div class="kaue_faq_item">
+                                    <button type="button" class="kaue_faq_pergunta" aria-expanded="false">
+                                        <span class="kaue_faq_texto">6. Qual o papel conjunto de soluções SIEM, EDR e SOAR em um SOC moderno?</span>
+                                        <span class="kaue_faq_icone">+</span>
+                                    </button>
+                                    <div class="kaue_faq_resposta">
+                                        <p>O <strong>SIEM</strong> centraliza e correlaciona eventos de toda a infraestrutura; o <strong>EDR</strong> monitora o comportamento de processos e memória diretamente nos endpoints; e o <strong>SOAR</strong> automatiza playbooks de resposta (como isolar uma máquina infectada e bloquear um IP no firewall em segundos).</p>
+                                    </div>
+                                </div>
+
+                                <div class="kaue_faq_item">
+                                    <button type="button" class="kaue_faq_pergunta" aria-expanded="false">
+                                        <span class="kaue_faq_texto">7. Como as regras Sigma e YARA auxiliam na caça a ameaças (Threat Hunting)?</span>
+                                        <span class="kaue_faq_icone">+</span>
+                                    </button>
+                                    <div class="kaue_faq_resposta">
+                                        <p><strong>Sigma</strong> é um formato aberto e genérico para escrever regras de detecção em arquivos de log, podendo ser convertido para consultas de qualquer SIEM. Já <strong>YARA</strong> identifica e classifica amostras de malware em arquivos ou memória com base em padrões textuais e binários.</p>
+                                    </div>
+                                </div>
+
+                                <div class="kaue_faq_item">
+                                    <button type="button" class="kaue_faq_pergunta" aria-expanded="false">
+                                        <span class="kaue_faq_texto">8. Quais são as etapas do ciclo de Resposta a Incidentes segundo o NIST SP 800-61?</span>
+                                        <span class="kaue_faq_icone">+</span>
+                                    </button>
+                                    <div class="kaue_faq_resposta">
+                                        <p>O ciclo do NIST compreende quatro fases integradas: <strong>1. Preparação</strong> (ferramentas, treinamento e acessos), <strong>2. Detecção e Análise</strong> (triagem de alertas e escopo), <strong>3. Contenção, Erradicação e Recuperação</strong> (isolamento e restauração segura) e <strong>4. Atividades Pós-Incidente</strong> (Lições Aprendidas).</p>
+                                    </div>
+                                </div>
+
+                                <div class="kaue_faq_item">
+                                    <button type="button" class="kaue_faq_pergunta" aria-expanded="false">
+                                        <span class="kaue_faq_texto">9. O que é a Pirâmide da Dor (Pyramid of Pain) em Inteligência de Ameaças?</span>
+                                        <span class="kaue_faq_icone">+</span>
+                                    </button>
+                                    <div class="kaue_faq_resposta">
+                                        <p>Criada por David Bianco, demonstra o esforço imposto a um invasor quando bloqueamos diferentes indicadores: bloquear Hashes e IPs causa pouca dificuldade ao atacante, enquanto detectar e bloquear suas <strong>Ferramentas e TTPs (Táticas, Técnicas e Procedimentos)</strong> no topo da pirâmide força o adversário a reconstruir toda sua operação.</p>
+                                    </div>
+                                </div>
+
+                                <div class="kaue_faq_item">
+                                    <button type="button" class="kaue_faq_pergunta" aria-expanded="false">
+                                        <span class="kaue_faq_texto">10. Por que o princípio Zero Trust substitui as VPNs corporativas tradicionais?</span>
+                                        <span class="kaue_faq_icone">+</span>
+                                    </button>
+                                    <div class="kaue_faq_resposta">
+                                        <p>VPNs tradicionais frequentemente concedem acesso amplo à sub-rede interna após a conexão, facilitando a movimentação lateral caso a estação do usuário seja comprometida. O <strong>Zero Trust (ZTNA)</strong> concede acesso exclusivo por aplicação, validando continuamente a identidade, o contexto e a saúde do dispositivo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PARTE 2 DA SEÇÃO 10: FORMULÁRIO SEMÂNTICO DE 12 CAMPOS PARA REPORTE DE BUG BOUNTY -->
+                    <div class="kaue_form_wrapper">
+                        <h3 class="kaue_form_main_title">Formulário Oficial de Submissão de Vulnerabilidade (Bug Bounty &amp; CVD)</h3>
+                        <p class="pedro_section_subtitle">Todos os 12 campos abaixo são validados via JavaScript antes do protocolo da divulgação coordenada.</p>
+
+                        <form id="kaue_form_bugbounty" class="kaue_form" novalidate>
+                            <!-- Fieldset 1: Identificação e Escopo (Campos 1 a 4) -->
+                            <fieldset class="kaue_fieldset">
+                                <legend class="kaue_legend">1. Identificação do Pesquisador &amp; Ativo Alvo</legend>
+                                <div class="kaue_campos_grid">
+                                    <!-- Campo 1: Text (Nome/Handle) -->
+                                    <div class="joelson_campo_grupo">
+                                        <label for="kaue_campo_nome" class="joelson_label">01. Nome ou Handle do Pesquisador:</label>
+                                        <input type="text" id="kaue_campo_nome" class="pedro_input_field" placeholder="Ex: Pedro Silva (@sec_pedro)">
+                                    </div>
+
+                                    <!-- Campo 2: Email -->
+                                    <div class="joelson_campo_grupo">
+                                        <label for="kaue_campo_email" class="joelson_label">02. E-mail de Contato Criptografado:</label>
+                                        <input type="email" id="kaue_campo_email" class="pedro_input_field" placeholder="pesquisador@protonmail.com">
+                                    </div>
+
+                                    <!-- Campo 3: URL -->
+                                    <div class="joelson_campo_grupo">
+                                        <label for="kaue_campo_url" class="joelson_label">03. URL / Endpoint Vulnerável Completo:</label>
+                                        <input type="url" id="kaue_campo_url" class="pedro_input_field" placeholder="https://api.alvo-corporativo.com.br/v1/export">
+                                    </div>
+
+                                    <!-- Campo 4: Text (IP / Hostname) -->
+                                    <div class="joelson_campo_grupo">
+                                        <label for="kaue_campo_host" class="joelson_label">04. Endereço IP ou Hostname do Servidor:</label>
+                                        <input type="text" id="kaue_campo_host" class="pedro_input_field" placeholder="Ex: 192.0.2.45 ou srv-prd-api01.internal">
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- Fieldset 2: Métricas Técnicas e Classificação (Campos 5 a 8) -->
+                            <fieldset class="kaue_fieldset">
+                                <legend class="kaue_legend">2. Parâmetros Técnicos de Rede &amp; Classificação OWASP</legend>
+                                <div class="kaue_campos_grid">
+                                    <!-- Campo 5: Number (Porta de Rede) -->
+                                    <div class="joelson_campo_grupo">
+                                        <label for="kaue_campo_porta" class="joelson_label">05. Porta de Rede Afetada (1 a 65535):</label>
+                                        <input type="number" id="kaue_campo_porta" class="pedro_input_field" min="1" max="65535" placeholder="Ex: 443">
+                                    </div>
+
+                                    <!-- Campo 6: Number (Score CVSS) -->
+                                    <div class="joelson_campo_grupo">
+                                        <label for="kaue_campo_cvss" class="joelson_label">06. Nota Base CVSS v3.1 (0.0 a 10.0):</label>
+                                        <input type="number" id="kaue_campo_cvss" class="pedro_input_field" min="0" max="10" step="0.1" placeholder="Ex: 9.1">
+                                    </div>
+
+                                    <!-- Campo 7: Date (Data da Descoberta) -->
+                                    <div class="joelson_campo_grupo">
+                                        <label for="kaue_campo_data" class="joelson_label">07. Data da Descoberta da Falha:</label>
+                                        <input type="date" id="kaue_campo_data" class="pedro_input_field">
+                                    </div>
+
+                                    <!-- Campo 8: Select (Categoria OWASP) -->
+                                    <div class="joelson_campo_grupo">
+                                        <label for="kaue_campo_owasp" class="joelson_label">08. Categoria Principal OWASP Top 10:</label>
+                                        <select id="kaue_campo_owasp" class="pedro_select_field">
+                                            <option value="">-- Selecione a categoria OWASP --</option>
+                                            <option value="A01-Broken-Access-Control">A01:2021 - Broken Access Control</option>
+                                            <option value="A02-Cryptographic-Failures">A02:2021 - Cryptographic Failures</option>
+                                            <option value="A03-Injection">A03:2021 - Injection (SQLi / XSS / Command)</option>
+                                            <option value="A04-Insecure-Design">A04:2021 - Insecure Design</option>
+                                            <option value="A05-Security-Misconfiguration">A05:2021 - Security Misconfiguration</option>
+                                            <option value="A06-Vulnerable-Components">A06:2021 - Vulnerable and Outdated Components</option>
+                                            <option value="A07-Auth-Failures">A07:2021 - Identification and Authentication Failures</option>
+                                            <option value="A08-Integrity-Failures">A08:2021 - Software and Data Integrity Failures</option>
+                                            <option value="A09-Logging-Failures">A09:2021 - Security Logging and Monitoring Failures</option>
+                                            <option value="A10-SSRF">A10:2021 - Server-Side Request Forgery (SSRF)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- Fieldset 3: Severidade, Impacto, PoC e Termo Legal (Campos 9 a 12) -->
+                            <fieldset class="kaue_fieldset">
+                                <legend class="kaue_legend">3. Severidade, Impacto CIA, Prova de Conceito (PoC) e Compliance</legend>
+
+                                <!-- Campo 9: Radio (Severidade) -->
+                                <div class="joelson_campo_grupo kaue_espaco_bloco">
+                                    <span class="joelson_label">09. Nível de Criticidade Estimado (Radio):</span>
+                                    <div class="kaue_opcoes_inline">
+                                        <label class="kaue_check_label">
+                                            <input type="radio" name="kaue_radio_severidade" value="Baixa"> Baixa
+                                        </label>
+                                        <label class="kaue_check_label">
+                                            <input type="radio" name="kaue_radio_severidade" value="Media"> Média
+                                        </label>
+                                        <label class="kaue_check_label">
+                                            <input type="radio" name="kaue_radio_severidade" value="Alta"> Alta
+                                        </label>
+                                        <label class="kaue_check_label">
+                                            <input type="radio" name="kaue_radio_severidade" value="Critica"> Crítica (P1)
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Campo 10: Checkbox Grupo (Vetores de Impacto CIA) -->
+                                <div class="joelson_campo_grupo kaue_espaco_bloco">
+                                    <span class="joelson_label">10. Impacto Comprovado na Tríade CIA (Selecione ao menos um):</span>
+                                    <div class="kaue_opcoes_inline">
+                                        <label class="kaue_check_label">
+                                            <input type="checkbox" name="kaue_check_impacto" value="Confidencialidade"> Confidencialidade (Exfiltração de Dados)
+                                        </label>
+                                        <label class="kaue_check_label">
+                                            <input type="checkbox" name="kaue_check_impacto" value="Integridade"> Integridade (Adulteração de Registros)
+                                        </label>
+                                        <label class="kaue_check_label">
+                                            <input type="checkbox" name="kaue_check_impacto" value="Disponibilidade"> Disponibilidade (Negação de Serviço)
+                                        </label>
+                                        <label class="kaue_check_label">
+                                            <input type="checkbox" name="kaue_check_impacto" value="RCE"> Execução Remota de Código (RCE)
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Campo 11: Textarea (Prova de Conceito) -->
+                                <div class="joelson_campo_grupo kaue_espaco_bloco">
+                                    <label for="kaue_campo_poc" class="joelson_label">11. Prova de Conceito (PoC), Passos para Reprodução e Requisição HTTP (mín. 20 caracteres):</label>
+                                    <textarea id="kaue_campo_poc" class="pedro_textarea_field" rows="5" placeholder="1. Envie uma requisição POST para /api/v1/export com o cabeçalho Authorization...&#10;2. Observe a resposta HTTP 200 expondo registros..."></textarea>
+                                </div>
+
+                                <!-- Campo 12: Checkbox Único (Termo de Divulgação Responsável) -->
+                                <div class="joelson_campo_grupo kaue_espaco_bloco">
+                                    <label class="kaue_check_label kaue_termo_destaque">
+                                        <input type="checkbox" id="kaue_campo_termo">
+                                        <span><strong>12. Declaração de Divulgação Responsável (Safe Harbor):</strong> Confirmo que os testes respeitaram o escopo autorizado, não causaram indisponibilidade intencional e manterei sigilo até a correção oficial do incidente.</span>
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <div class="kaue_form_botoes">
+                                <button type="submit" class="pedro_btn_primario">Protocolar Relatório de Vulnerabilidade</button>
+                                <button type="reset" class="pedro_btn_secundario">Limpar Formulário</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="joelson_retorno_container">
+                        <a href="#topo" class="pedro_btn_topo">&uarr; Voltar ao topo</a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+
+        <!-- TAG SEMÂNTICA ÚNICA 4: <footer> -->
+        <footer class="pedro_footer">
+            <div class="pedro_footer_inner">
+                <div class="pedro_footer_col">
+                    <!-- CSS INLINE 3 de 3 -->
+                    <h2 class="pedro_footer_title" style="color: #b91010; font-size: 1.15rem; margin-bottom: 8px;">CyberSec &amp; Threat Intelligence Hub</h2>
+                    <p class="pedro_footer_text">Portal técnico One Page desenvolvido para avaliação acadêmica rigorosa de Desenvolvimento Front-End e Arquitetura de Segurança da Informação.</p>
+                </div>
+                <div class="pedro_footer_col">
+                    <p class="pedro_footer_text"><strong>Integrantes do Grupo:</strong> Pedro Silva, Kauê Gonçalves &amp; Joelson Cropolato</p>
+                    <p class="pedro_footer_text">&copy; 2026 — Todos os direitos reservados. Conformidade OWASP WSTG &amp; NIST Cybersecurity Framework.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
